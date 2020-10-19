@@ -182,6 +182,23 @@
 
   // главный цикл игры
   function loop() {
+    if (score == 280)
+    {
+      // рисуем чёрный прямоугольник посередине поля
+      context.fillStyle = 'black';
+      context.globalAlpha = 0.75;
+      context.fillRect(0, canvas.height / 2 - 30, canvas.width, 60);
+      // пишем надпись белым моноширинным шрифтом по центру
+      context.globalAlpha = 1;
+      context.fillStyle = 'white';
+      context.font = '36px monospace';
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.fillText('You Win !!!', canvas.width / 2, canvas.height / 2);
+
+      // останавливаем игру
+      return; 
+    }
     // на каждом кадре — очищаем поле и рисуем всё заново
     requestAnimationFrame(loop);
     context.clearRect(0,0,canvas.width,canvas.height);
@@ -246,7 +263,8 @@ if (ball.y > canvas.height) {
     context.fillText('GAME OVER!', canvas.width / 2, canvas.height / 2);
 
     // останавливаем игру
-    return; };
+    return; 
+  };
 
   ball.x = 130;
   ball.y = 260;
